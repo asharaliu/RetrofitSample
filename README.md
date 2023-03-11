@@ -9,5 +9,5 @@ This sample showcases:
 
 ## Screenshots
 
-<img src="screenshots/country_list_screen.png"/>
-<img src="screenshots/state_screen.png"/>
+<img src="screenshots/country_list_screen.png" width="200" height="400"/>
+<img src="screenshots/state_screen.png" width="200" height="400"/>
