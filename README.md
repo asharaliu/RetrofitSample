@@ -9,5 +9,5 @@ This sample showcases:
 
 ## Screenshots
 
-<img src="screenshots/country_screen.png"/>
+<img src="screenshots/country_list_screen.png"/>
 <img src="screenshots/state_screen.png"/>
