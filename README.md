@@ -8,6 +8,10 @@ This sample showcases:
 * Navigation graph of compose view
 
 ## Screenshots
+First screen
 
 <img src="screenshots/country_list_screen.png" width="200" height="400"/>
+
+Second screen
+
 <img src="screenshots/state_screen.png" width="200" height="400"/>
