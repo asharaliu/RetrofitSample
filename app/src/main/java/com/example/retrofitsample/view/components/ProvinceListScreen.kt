@@ -44,7 +44,7 @@ fun ProvinceItem(province: Province?) {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .padding(5.dp)
-            .background(color = Color.Gray, shape = RoundedCornerShape(8.dp))
+            .background(color = Color.DarkGray, shape = RoundedCornerShape(8.dp))
             .clip(RoundedCornerShape(8.dp))
             .fillMaxWidth()
             .padding(8.dp)
@@ -52,7 +52,7 @@ fun ProvinceItem(province: Province?) {
         Text(
             modifier = Modifier.padding(5.dp),
             text = province?.name.toString(),
-            color = Color.Black
+            color = Color.White
         )
     }
 }

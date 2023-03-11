@@ -57,9 +57,9 @@ fun ShimmerAnimation(
 ) {
     //Colors for the shimmer animation
     val shimmerColorShades = listOf(
-        Color.LightGray.copy(0.9f),
-        Color.LightGray.copy(0.2f),
-        Color.LightGray.copy(0.9f)
+        Color.DarkGray.copy(0.9f),
+        Color.DarkGray.copy(0.2f),
+        Color.DarkGray.copy(0.9f)
     )
     val transition = rememberInfiniteTransition()
     //Transition animation

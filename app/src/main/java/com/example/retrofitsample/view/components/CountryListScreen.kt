@@ -55,7 +55,7 @@ fun CountryItem(
         modifier = Modifier
             .testTag("Country List Item")
             .padding(5.dp)
-            .background(color = Color.Gray, shape = RoundedCornerShape(8.dp))
+            .background(color = Color.DarkGray, shape = RoundedCornerShape(8.dp))
             .clip(RoundedCornerShape(8.dp))
             .clickable { onItemClick(country.iso2) }
             .fillMaxWidth()
@@ -76,7 +76,7 @@ fun CountryItem(
             contentDescription = ""
         )
 
-        Text(modifier = Modifier.padding(5.dp), text = country.name.toString(), color = Color.Black)
+        Text(modifier = Modifier.padding(5.dp), text = country.name.toString(), color = Color.White)
     }
 }
 
