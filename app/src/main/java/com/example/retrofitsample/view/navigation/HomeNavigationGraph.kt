@@ -2,6 +2,8 @@ package com.example.retrofitsample.view.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -32,12 +34,20 @@ fun HomeNavigationRoute(
     countryViewModel: CountryViewModel,
     navController: NavHostController
 ) {
-    // Calling the country list
-    LaunchedEffect(key1 = Unit) {
-        countryViewModel.getCountryList()
-    }
-
+    CallCountryAPI(countryViewModel)
     HomeNavHost(navController, countryViewModel)
+}
+
+@Composable
+private fun CallCountryAPI(countryViewModel: CountryViewModel) {
+    val initialApiCalled = rememberSaveable { mutableStateOf(false) }
+    // Calling the country list
+    if (!initialApiCalled.value) {
+        LaunchedEffect(key1 = Unit) {
+            countryViewModel.getCountryList()
+            initialApiCalled.value = true
+        }
+    }
 }
 
 @Composable

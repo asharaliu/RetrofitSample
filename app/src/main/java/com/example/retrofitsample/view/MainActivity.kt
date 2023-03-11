@@ -9,6 +9,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -69,9 +71,7 @@ fun CountryListScreenRoute(
  */
 @Composable
 fun ProvinceListScreenRoute(iso2: String?, countryViewModel:CountryViewModel) {
-    LaunchedEffect(key1 = true) {
-        countryViewModel.getProvinceList(iso2)
-    }
+    CallProvinceAPI(countryViewModel, iso2)
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -90,6 +90,21 @@ fun ProvinceListScreenRoute(iso2: String?, countryViewModel:CountryViewModel) {
                     it.data.states
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun CallProvinceAPI(
+    countryViewModel: CountryViewModel,
+    iso2: String?
+) {
+    val initialApiCalled = rememberSaveable { mutableStateOf(false) }
+    // Calling the country list
+    if (!initialApiCalled.value) {
+        LaunchedEffect(key1 = Unit) {
+            countryViewModel.getProvinceList(iso2)
+            initialApiCalled.value = true
         }
     }
 }
