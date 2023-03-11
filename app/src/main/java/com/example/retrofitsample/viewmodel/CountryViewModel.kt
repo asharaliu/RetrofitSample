@@ -29,7 +29,6 @@ class CountryViewModel @Inject constructor(private val countryRepository: Countr
     fun getCountryList() {
         viewModelScope.launch {
             try {
-                _countryStateFlow.value = RequestState.Loading
                 _countryStateFlow.value = RequestState.Success(countryRepository.getCountriesList())
             } catch (e: Exception) {
                 _countryStateFlow.value = RequestState.Error(e)

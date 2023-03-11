@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -12,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.retrofitsample.util.Const
+import com.example.retrofitsample.util.LifecycleLaunchedEffect
 import com.example.retrofitsample.view.CountryListScreenRoute
 import com.example.retrofitsample.view.ProvinceListScreenRoute
 import com.example.retrofitsample.viewmodel.CountryViewModel
@@ -34,20 +36,10 @@ fun HomeNavigationRoute(
     countryViewModel: CountryViewModel,
     navController: NavHostController
 ) {
-    CallCountryAPI(countryViewModel)
-    HomeNavHost(navController, countryViewModel)
-}
-
-@Composable
-private fun CallCountryAPI(countryViewModel: CountryViewModel) {
-    val initialApiCalled = rememberSaveable { mutableStateOf(false) }
-    // Calling the country list
-    if (!initialApiCalled.value) {
-        LaunchedEffect(key1 = Unit) {
-            countryViewModel.getCountryList()
-            initialApiCalled.value = true
-        }
+    LifecycleLaunchedEffect {
+        countryViewModel.getCountryList()
     }
+    HomeNavHost(navController, countryViewModel)
 }
 
 @Composable
