@@ -3,9 +3,8 @@ A sample application which loads the countries and states using API provided by 
 
 This sample showcases:
 * Retrofit integration on a compose application
-* Integration with an existing architecture based on Jetpack libraries.
-* UI Unit test case of compose view
-* Navigation graph of compose view
+* UI Unit test case of Jetpack compose view
+* Navigation graph of Jetpack composable view
 
 ## Screenshots
 First screen
