@@ -7,6 +7,7 @@ import com.example.retrofitsample.model.ProvinceList
 import com.example.retrofitsample.network.RequestState
 import com.example.retrofitsample.network.repository.CountryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -27,7 +28,7 @@ class CountryViewModel @Inject constructor(private val countryRepository: Countr
      * API Call for the first screen(Countries list)
      */
     fun getCountryList() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 _countryStateFlow.value = RequestState.Success(countryRepository.getCountriesList())
             } catch (e: Exception) {
@@ -40,7 +41,7 @@ class CountryViewModel @Inject constructor(private val countryRepository: Countr
      * API Call for the second screen(Province list)
      */
     fun getProvinceList(iso2: String?) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 _provinceStateFlow.value = RequestState.Loading
                 _provinceStateFlow.value =
